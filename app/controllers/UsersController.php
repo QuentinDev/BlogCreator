@@ -9,7 +9,7 @@ class UsersController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('/');
 	}
 
 
@@ -95,12 +95,13 @@ class UsersController extends \BaseController {
 
     public function getLogin()
     {
-
+        return View::make('users/login');
     }
 
     public function login()
     {
-
+        Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')));
+        return Redirect::to('/');
     }
 
     public function logout()

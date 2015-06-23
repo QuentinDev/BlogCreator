@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Connexion</h2>
+                    <h2>Inscription</h2>
                 </div>
             </div>
             <div class="row">
@@ -19,6 +19,12 @@
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
+                            {{Form::label('username','Pseudo')}}
+                            {{Form::text('username', null, array('class'=>'form-control input-lg'))}}
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
                             {{Form::label('password', 'Password')}}
                             {{Form::password('password', array('class'=>'form-control input-lg'))}}
                         </div>
@@ -27,7 +33,7 @@
                     <div id="success"></div>
                     <div class="row">
                         <div class="form-group col-xs-12">
-                            {{Form::submit("S'inscrire", array('class'=> 'btn btn-lg btn-primary btn-block signup-btn'))}}
+                            {{Form::submit("S'inscrire", array('class'=> 'btn btn-lg btn-primary'))}}
 
                         </div>
                     </div>

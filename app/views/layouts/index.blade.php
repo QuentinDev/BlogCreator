@@ -14,36 +14,52 @@
 
 <body>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">
-                <span class="name">B</span><span class="text">log </span><span class="lastname">C</span><span class="text">reator</span>
-            </a>
+            <a class="navbar-brand" href="/"><span class="name">B</span><span class="text">log </span><span class="lastname">C</span><span class="text">reator</span></a>
         </div>
-        <div class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                {{--<li><a href="">Creer un form</a></li>--}}
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                @if(!Auth::check())
                 <li><a href={{URL::to('users/create')}}>Inscription</a></li>
                 <li><a href={{URL::to('users/login')}}>Connexion</a></li>
+                @endif
+                @if(Auth::check())
+                <li><a>{{ Auth::user()->username }}</a></li>
+                @endif
+                {{--<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                   --}}{{-- <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>--}}{{--
+                </li>--}}
             </ul>
-        </div>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div><!--/.nav-collapse -->
     </div>
-</div>
+</nav>
 
 <div class="view">
     @yield('content')
 </div>
 {{ HTML::script('https://code.jquery.com/jquery-1.10.2.min.js') }}
 {{ HTML::script('js/bootstrap.min.js') }}
+
 
 </body>
 
