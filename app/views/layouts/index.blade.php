@@ -27,13 +27,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
+                <li><a href="/blogs">Home</a></li>
                 @if(!Auth::check())
                 <li><a href={{URL::to('users/create')}}>Inscription</a></li>
                 <li><a href={{URL::to('users/login')}}>Connexion</a></li>
                 @endif
                 @if(Auth::check())
-                <li><a>{{ Auth::user()->username }}</a></li>
+                <li><a href={{URL::to('blogs/create')}}>Créer un nouveau blog</a></li>
                 @endif
                 {{--<li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -49,6 +49,11 @@
                 </li>--}}
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                @if(Auth::check())
+                    <li><a class="logout" href={{URL::to('users/logout')}}><span>Logout</span><i class="fa fa-power-off"></i></a></li>
+                    <li><a style="color: #428BCA; font-weight:bold;">{{ Auth::user()->username }}</a></li>
+
+                @endif
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -57,6 +62,11 @@
 <div class="view">
     @yield('content')
 </div>
+
+<div class="view">
+    @yield('comments')
+</div>
+
 {{ HTML::script('https://code.jquery.com/jquery-1.10.2.min.js') }}
 {{ HTML::script('js/bootstrap.min.js') }}
 
