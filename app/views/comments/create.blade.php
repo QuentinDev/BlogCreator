@@ -33,8 +33,11 @@
                                 <span><i class="glyphicon glyphicon-user"></i></span>
                                 <li><span>{{ $comment->username }}</span></li>
                                 @if(Auth::check())
-                                    @if(Auth::user()->id == $comment->id_user)
-                                        <li><a href={{URL::to('comments/destroy/' . $comment->id)}}>Supprimer</a></li>
+                                    @if(Auth::user()->id == $post->id_user)
+                                        {{Form::open(array('url' => 'comments/'. $comment->id, "method" => "post"))}}
+                                        {{Form::hidden('_method','DELETE') }}
+                                        {{Form::submit("Supprimer!",array('class'=>'btn btn-default'))}}
+                                        {{Form::close()}}
                                     @endif
                                 @endif
                             </ul>

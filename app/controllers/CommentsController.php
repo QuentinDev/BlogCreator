@@ -88,7 +88,9 @@ class CommentsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+        return Redirect::to('/');
 	}
 
 
