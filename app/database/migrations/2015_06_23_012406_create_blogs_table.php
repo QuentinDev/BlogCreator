@@ -14,7 +14,7 @@ class CreateBlogsTable extends Migration {
 	{
 		Schema::create('blogs', function($table){
             $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->nullable();
             $table->string('title');
             $table->timestamps();
         });

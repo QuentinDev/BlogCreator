@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration {
 		Schema::create('posts', function($table){
             $table->increments('id');
             $table->unsignedInteger('id_blog');
-            $table->integer('id_user');
+            $table->integer('id_user')->nullable();
             $table->string('title');
             $table->string('content');
             $table->string('filename');
