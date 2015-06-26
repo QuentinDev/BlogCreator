@@ -4,6 +4,14 @@
     <h3>{{ $blog->title }}</h3>
     @if(Auth::check())
         @if(Auth::user()->id == $blog->user_id)
+            {{Form::open(array('url' => 'blogs/'. $blog->id, "method" => "post"))}}
+            {{Form::hidden('_method','DELETE') }}
+            {{Form::submit("Supprimer le blog!", array('class' => 'btn btn-default'))}}
+            {{Form::close()}}
+        @endif
+    @endif
+    @if(Auth::check())
+        @if(Auth::user()->id == $blog->user_id)
             <a href={{ URL::to('posts/create/' . $blog->id) }}>Créer un article</a>
         @endif
     @endif
@@ -22,11 +30,13 @@
                         <li>|</li>
                         <span><i class="glyphicon glyphicon-comment"></i></span>
                         <li><a href={{URL::to('comments/create/' . $post->id)}}>Voir les commentaires</a></li>
-                        @if(Auth::user()->id = $post->id_user)
-                            {{Form::open(array('url' => 'posts/'. $post->id, "method" => "post"))}}
-                            {{Form::hidden('_method','DELETE') }}
-                            {{Form::submit("Supprimer!",array('class'=>'btn btn-default'))}}
-                            {{Form::close()}}
+                        @if(Auth::check())
+                            @if(Auth::user()->id == $post->id_user)
+                                {{Form::open(array('url' => 'posts/'. $post->id, "method" => "post"))}}
+                                {{Form::hidden('_method','DELETE') }}
+                                {{Form::submit("Supprimer!",array('class'=>'btn btn-default'))}}
+                                {{Form::close()}}
+                            @endif
                         @endif
                     </ul>
                 </div>

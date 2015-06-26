@@ -13,7 +13,9 @@
                                 <li><span><i class="glyphicon glyphicon-calendar"></i>{{ $post->created_at }}</span></li>
                                 <li>|</li>
                                 <span><i class="glyphicon glyphicon-comment"></i></span>
+                                @if(Auth::check())
                                 <li><a href={{URL::to('comments/create/' . $post->id)}}>Commenter</a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -30,8 +32,10 @@
                                 <li>|</li>
                                 <span><i class="glyphicon glyphicon-user"></i></span>
                                 <li><span>{{ $comment->username }}</span></li>
-                                @if(Auth::user()->id = $comment->id_user)
-                                    <li><a href={{URL::to('comments/destroy/' . $comment->id)}}>Supprimer</a></li>
+                                @if(Auth::check())
+                                    @if(Auth::user()->id == $comment->id_user)
+                                        <li><a href={{URL::to('comments/destroy/' . $comment->id)}}>Supprimer</a></li>
+                                    @endif
                                 @endif
                             </ul>
                         </div>
@@ -39,6 +43,7 @@
                     @endforeach
                 </div>
             </div>
+    @if(Auth::check())
     <section id="connexion">
         <div class="container">
             <div class="row">
@@ -63,4 +68,5 @@
             </div>
         </div>
     </section>
+    @endif
 @stop

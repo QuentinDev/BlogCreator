@@ -107,7 +107,7 @@ class UsersController extends \BaseController {
     public function logout()
     {
         Auth::logout();
-        return Redirect::to('users/login');
+        return Redirect::to('/');
     }
 
 

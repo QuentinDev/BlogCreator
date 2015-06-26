@@ -52,6 +52,7 @@
                 @if(Auth::check())
                     <li><a class="logout" href={{URL::to('users/logout')}}><span>Logout</span><i class="fa fa-power-off"></i></a></li>
                     <li><a style="color: #428BCA; font-weight:bold;">{{ Auth::user()->username }}</a></li>
+                    <li><a>{{Auth::user()->id}}</a></li>
 
                 @endif
             </ul>

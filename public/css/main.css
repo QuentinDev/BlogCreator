@@ -161,7 +161,7 @@ a:after {
     font-weight:bold!important;
 }
 
-@media(min-width:200px)
+@media(min-width:500px)
 {
     .img
     {
